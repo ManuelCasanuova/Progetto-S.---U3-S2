@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Row, Spinner } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
+import CityCard from "./CityCard";
 
 const Section = () => {
   const [caricamento, setCaricamento] = useState(false);
@@ -49,7 +50,7 @@ const Section = () => {
         .then((dettagliCitta) => {
           setCaricamento(false);
           setInfoCitta(dettagliCitta);
-          console.log(dettagliCitta);
+          console.log("SONO il console log", dettagliCitta);
         })
         .catch((e) => {
           console.error("Errore durante il recupero dei dati:", e);
@@ -61,19 +62,21 @@ const Section = () => {
 
   return (
     <>
-      {
-        <h4 className="my-2">{infoCitta.name}</h4> /*
-      {setCaricamento && (
+      {caricamento ? (
         <Spinner animation="grow" role="status" variant="danger" className="d-block mx-auto">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
+      ) : infoCitta ? (
+        <>
+          <Container>
+            <Row className="justify-content-center">
+              <CityCard infoCitta={infoCitta} />
+            </Row>
+          </Container>
+        </>
+      ) : (
+        <h4 className="my-2">Città non trovata</h4>
       )}
-      <Row xs={1} sm={2} md={6} className=" g-4">
-        {this.state.remoteFilms.slice(0, 6).map((film) => {
-          return <SingleFilm key={film.imdbID} film={film} />;
-        })}
-      </Row> */
-      }
     </>
   );
 };
