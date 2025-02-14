@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router";
@@ -9,11 +9,12 @@ const FormNav = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/home/section/${città}`);
+     navigate(`/home/section/${città}`);
   };
-
+  console.log(città);
   return (
-    <Form className="d-flex align-items-center" onSubmit={handleSubmit}>
+    <>
+      <Form className="d-flex align-items-center" onSubmit={handleSubmit}>
       <Form.Group className="me-3" controlId="formCittà">
         <Form.Control
           type="text"
@@ -27,7 +28,8 @@ const FormNav = () => {
         Cerca
       </Button>
     </Form>
+    </>
   );
 };
 
-export default FormNav;
+export default FormNav; */
