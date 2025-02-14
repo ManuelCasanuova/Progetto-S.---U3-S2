@@ -13,3 +13,12 @@
   text-decoration: none;
   color: #078cc3;
 }
+
+#hero {
+  background-image: url("./assets/Hero.webp");
+  background-size: cover; /* o contain, auto, 100% 100%, ecc. */
+  background-repeat: no-repeat; /* o repeat, repeat-x, repeat-y */
+  padding: 200px 0;
+
+  opacity: 0.2;
+}
