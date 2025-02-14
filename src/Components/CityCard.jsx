@@ -14,7 +14,7 @@ const CityCard = (props) => {
             <Card.Title className="display-5 fw-bold">{info.name}</Card.Title>
             <Card.Text>{new Date(info.dt * 1000).toLocaleDateString("it-IT")}</Card.Text>
             <Card.Text>Media: {Math.floor(info.main.temp)}°C</Card.Text>
-            <Link className="btn btn-dark w-100" to={`CityDetails/${info.lat}/${info.lon}`}>
+            <Link className="btn btn-dark w-100" to={`CityDetails/${info.coord.lat}/${info.coord.lon}`}>
               Dettagli
             </Link>
           </Card.Body>
