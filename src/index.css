@@ -1,0 +1,15 @@
+.navbar {
+  background-color: #daceb6;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  font-weight: 600;
+  border-bottom: 2px solid #078cc3;
+}
+
+.footer-icon,
+.footer-links a {
+  text-decoration: none;
+  color: #078cc3;
+}
