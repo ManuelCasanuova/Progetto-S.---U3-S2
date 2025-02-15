@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+
 import CityCard from "./CityCard";
+import { Spinner } from "react-bootstrap";
 
 const Section = (props) => {
   const [caricamento, setCaricamento] = useState(false);
@@ -31,6 +32,7 @@ const Section = (props) => {
 
   useEffect(() => {
     fetchCittà();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const Section = (props) => {
         .then((dettagliCitta) => {
           setCaricamento(false);
           setInfoCitta(dettagliCitta);
-          console.log("SONO il console log", dettagliCitta);
+          console.log("Sono l'oggeto ricavato dalla FETCH", dettagliCitta);
         })
         .catch((e) => {
           console.error("Errore durante il recupero dei dati:", e);

@@ -6,6 +6,7 @@ import { Arrow90degDown } from "react-bootstrap-icons";
 const CityDetails = () => {
   const { lat, lon } = useParams();
   console.log(lat);
+  console.log(lon);
   const [cityDetails, setCityDetails] = useState(null);
   const [caricamento, setCaricamento] = useState(false);
 

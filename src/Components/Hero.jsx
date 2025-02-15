@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import CityCard from "./CityCard";
 import { Spinner } from "react-bootstrap";
 
-const Hero = (props) => {
+const Hero = () => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
   const [infoCitta, setInfoCitta] = useState(null);
+  const città = useParams();
 
   const fetchCittà = () => {
     setCaricamento(true);
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props.luogo}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${città}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
       .then((resp) => {
         if (!resp.ok) {
           throw new Error("Errore nella chiamata API");
@@ -31,6 +32,7 @@ const Hero = (props) => {
 
   useEffect(() => {
     fetchCittà();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
