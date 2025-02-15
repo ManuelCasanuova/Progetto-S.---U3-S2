@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import CityCard from "./CityCard";
 
-const Section = () => {
+const Section = (props) => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
   const [infoCitta, setInfoCitta] = useState(null);
 
   const fetchCittà = () => {
     setCaricamento(true);
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=roma&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props.luogo}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
       .then((resp) => {
         if (!resp.ok) {
           throw new Error("Errore nella chiamata API");
@@ -68,11 +68,7 @@ const Section = () => {
         </Spinner>
       ) : infoCitta ? (
         <>
-          <Container>
-            <Row className="justify-content-center">
-              <CityCard infoCitta={infoCitta} />
-            </Row>
-          </Container>
+          <CityCard infoCitta={infoCitta} />
         </>
       ) : (
         <h4 className="my-2">Città non trovata</h4>
