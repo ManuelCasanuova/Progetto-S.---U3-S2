@@ -6,6 +6,7 @@ import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import CityDetails from "./Components/CityDetails";
 import Hero from "./Components/Hero";
+import SurfPage from "./Components/SurfPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/hero/:place" element={<Hero />} />
           <Route path="/CityDetails/:lat/:lon" element={<CityDetails />} />
+          <Route path="SurfPage" element={<SurfPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap";
 const Section = (props) => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
-  const [infoCitta, setInfoCitta] = useState(null);
+  const [infoCitta, setInfoCitta] = useState([]);
 
   const fetchCittà = () => {
     setCaricamento(true);
@@ -21,7 +21,7 @@ const Section = (props) => {
         setCaricamento(false);
         if (cittaCercata.length > 0) {
           setCity(cittaCercata[0]);
-          console.log(cittaCercata[0]);
+          console.log([...cittaCercata[0]]);
         }
       })
       .catch((e) => {
@@ -51,7 +51,7 @@ const Section = (props) => {
         })
         .then((dettagliCitta) => {
           setCaricamento(false);
-          setInfoCitta(dettagliCitta);
+          setInfoCitta((prevInfo) => [...prevInfo, dettagliCitta]);
           console.log("Sono l'oggeto ricavato dalla FETCH", dettagliCitta);
         })
         .catch((e) => {
@@ -68,9 +68,11 @@ const Section = (props) => {
         <Spinner animation="grow" role="status" variant="danger" className="d-block mx-auto">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-      ) : infoCitta ? (
+      ) : infoCitta.length > 0 ? (
         <>
-          <CityCard infoCitta={infoCitta} />
+          {infoCitta.map((infoCitta) => (
+            <CityCard key={infoCitta.id} infoCitta={infoCitta} /> // Mostra ogni città come card
+          ))}
         </>
       ) : (
         <h4 className="my-2">Città non trovata</h4>

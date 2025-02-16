@@ -5,16 +5,17 @@ const HeroCard = ({ infoCitta }) => {
 
   return (
     <Container fluid>
-      <Row className="justify-content-center ">
-        <Col xs={3} md={3} className=" p-4 d-flex align-items-center border rounded border-black">
+      <Row className="justify-content-end ">
+        <Col xs={3} md={3} className=" p-4 d-flex align-items-center">
           <Card.Img variant="top" src={iconUrl} alt={infoCitta.weather[0].main} />
         </Col>
 
-        <Col xs={6} md={6} className="d-flex align-items-center border rounded border-black">
+        <Col xs={6} md={6} className="d-flex align-items-center ">
           <Card.Body>
-            <h2>{infoCitta.name}</h2>
-            <Card.Text>{Math.floor(infoCitta.main.temp)}°</Card.Text>
-            <Card.Text>{infoCitta.weather[0].description}</Card.Text>
+            <h2 className="display-5 fw-bold text-white">{infoCitta.name}</h2>
+            <Card.Text className="text-white">{new Date(infoCitta.dt * 1000).toLocaleDateString("it-IT")}</Card.Text>
+            <Card.Text className="text-white">Media: {Math.floor(infoCitta.main.temp)}°</Card.Text>
+            <Card.Text className="text-white">{infoCitta.weather[0].description}</Card.Text>
           </Card.Body>
         </Col>
       </Row>

@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Facebook, Instagram, TwitterX, Youtube } from "react-bootstrap-icons";
 
 const Footer = () => {
@@ -76,15 +76,11 @@ const Footer = () => {
           </Row>
 
           <Row>
-            <Col className="mb-2">
-              <Button variant="outline-secondary" className="btn btn-sm footer-button rounded-0 mt-3">
-                Service Code
-              </Button>
-            </Col>
+            <Col className="mb-2"></Col>
           </Row>
 
           <Row>
-            <Col className="mb-2 mt-2 copyright">© 2025 Dunder Miffflin, Inc. Meteo Company</Col>
+            <Col className="mb-2 mt-2 copyright">© 2025 CutBack Meteo Company</Col>
           </Row>
         </Col>
       </Row>

@@ -7,17 +7,18 @@ const CityCard = (props) => {
 
   return (
     <>
-      <Card className="rounded">
-        <Card.Img variant="top" src={iconUrl} alt={info.weather[0].main} />
-        <Card.Body>
-          <Card.Title className="display-5 fw-bold">{info.name}</Card.Title>
-          <Card.Text>{new Date(info.dt * 1000).toLocaleDateString("it-IT")}</Card.Text>
-          <Card.Text>Media: {Math.floor(info.main.temp)}°C</Card.Text>
-          <Link className="btn btn-dark w-100" to={`CityDetails/${info.coord.lat}/${info.coord.lon}`}>
-            Dettagli
-          </Link>
-        </Card.Body>
-      </Card>
+      <Link to={`CityDetails/${info.coord.lat}/${info.coord.lon}`} style={{ textDecoration: "none" }}>
+        <Card className="rounded-4 ">
+          <div className="image-container d-flex">
+            <Card.Img variant="top" src={iconUrl} alt={info.weather[0].main} />
+          </div>
+          <Card.Body className="me-auto">
+            <Card.Title className="display-5 fw-bold">{info.name}</Card.Title>
+
+            <Card.Text>Media: {Math.floor(info.main.temp)}°C</Card.Text>
+          </Card.Body>
+        </Card>
+      </Link>
     </>
   );
 };
