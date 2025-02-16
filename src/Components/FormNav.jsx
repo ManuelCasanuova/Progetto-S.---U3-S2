@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Link } from "react-router";
 
@@ -21,8 +21,10 @@ const FormNav = () => {
         </Form.Group>
 
         {place.trim() && (
-          <Link to={`/searched/${place}`} className="btn btn-success">
-            <Search />
+          <Link to={`/searched/${place}`} className="text-decoration-none">
+            <Button variant="outline-light">
+              <Search />
+            </Button>
           </Link>
         )}
       </Form>

@@ -18,8 +18,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/searched/:place" element={<Hero />} />
           <Route path="/searched/:place/CityDetails/:lat/:lon" element={<CityDetails />} />
+          <Route path="/SurfPage/CityDetails/:lat/:lon" element={<CityDetails />} />
           <Route path="/CityDetails/:lat/:lon" element={<CityDetails />} />
-          <Route path="SurfPage" element={<SurfPage />} />
+          <Route path="/SurfPage" element={<SurfPage />} />
         </Routes>
         {/*  <Footer /> */}
       </BrowserRouter>

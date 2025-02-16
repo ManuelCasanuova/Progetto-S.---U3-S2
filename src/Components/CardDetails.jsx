@@ -37,16 +37,14 @@ const CardDetails = ({ cityDetails }) => {
                 <ArrowDown className="detail-icon" style={{ transform: `rotate(${cityDetails.wind.deg}deg)` }} />
               </Card.Text>
               <Button onClick={() => setShowMore(!showMore)} className="mt-3" variant="primary">
-                {showMore ? "Show More" : "Show Less"}
+                {showMore ? "Show Less" : "Show More"}
               </Button>
             </Card.Body>
           </Col>
         </Row>
       </Container>
 
-      <Container fluid>
-        <FetchGiorni cityDetails={cityDetails} />
-      </Container>
+      <Container fluid>{showMore && <FetchGiorni cityDetails={cityDetails} />}</Container>
     </>
   );
 };

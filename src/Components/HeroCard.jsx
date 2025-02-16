@@ -6,7 +6,7 @@ const HeroCard = ({ infoCitta }) => {
 
   return (
     <Container fluid>
-      <Row className="justify-content-center my-5">
+      <Row className="justify-content-center mt-5">
         <Col
           xs={6}
           md={6}

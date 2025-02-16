@@ -5,6 +5,7 @@ body {
   background: linear-gradient(to bottom, #d79b7c, #80e0e8, #004d40);
   color: aliceblue;
   background-attachment: fixed;
+  font-family: "Phudu", serif;
 }
 
 .navbar {

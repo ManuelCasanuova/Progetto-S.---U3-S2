@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 const FetchGiorni = ({ cityDetails }) => {
   const [previsioni, setPrevisioni] = useState([]);
 
   const coord = cityDetails.coord;
-
-  console.log(cityDetails.coord);
 
   useEffect(() => {
     const fetchNextDays = () => {
@@ -20,10 +18,20 @@ const FetchGiorni = ({ cityDetails }) => {
           return resp.json();
         })
         .then((prossimiGiorni) => {
-            
+          const previsioneProssimiGiorni = prossimiGiorni.list
+            .filter((item, index) => index % 8 === 0)
+            .map((item) => ({
+              date: new Date(item.dt * 1000).toLocaleDateString("it-IT", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+              }),
+              temp: Math.floor(item.main.temp),
+              description: item.weather[0].description,
+              icon: item.weather[0].icon,
+            }));
 
-          setPrevisioni(previsioneProssimiGiorni);
-        })
+          setPrevisioni(previsioneProssimiGiorni.slice(0, 5));
         })
         .catch((e) => {
           console.error("Errore durante il recupero dei dati:", e);
@@ -33,37 +41,31 @@ const FetchGiorni = ({ cityDetails }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cityDetails]);
 
-  console.log("Array", previsioni);
-
   return (
-    <Container fluid>
-      <Row className="justify-content-center">
-        {previsioni.length > 0 ? (
-          previsioni.map((giorno) => (
-            <Col key={giorno.weather[0].id} xs={12} md={6} lg={4}>
-              <Card className="rounded-4 mb-4">
-                <div className="image-container d-flex">
-                  <Card.Img
-                    variant="top"
-                    src={`https://openweathermap.org/img/wn/${giorno.weather[0].icon}@2x.png`}
-                    alt={giorno.weather[0].main}
-                  />
-                </div>
-                <Card.Body>
-                  <Card.Title className="display-6 fw-bold">
-                    {new Date(giorno.dt * 1000).toLocaleDateString("it-IT")}
-                  </Card.Title>
-                  <Card.Text>Media: {Math.floor(giorno.main.temp)}°C</Card.Text>
-                  <Card.Text>{giorno.weather[0].description}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))
-        ) : (
-          <p className="text-center text-white">Nessun dato disponibile</p>
-        )}
-      </Row>
-    </Container>
+    <Row className="justify-content-center">
+      {previsioni.length > 0 ? (
+        previsioni.map((giorno, index) => (
+          <Col key={index} xs={12} md={6} lg={4}>
+            <Card className="rounded-4 mb-4">
+              <div className="image-container d-flex">
+                <Card.Img
+                  variant="top"
+                  src={`https://openweathermap.org/img/wn/${giorno.icon}@2x.png`}
+                  alt={giorno.description}
+                />
+              </div>
+              <Card.Body>
+                <Card.Title className="display-6 fw-bold">{giorno.date}</Card.Title>
+                <Card.Text>Media: {giorno.temp}°C</Card.Text>
+                <Card.Text>{giorno.description}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))
+      ) : (
+        <p className="text-center text-white">Nessun dato disponibile</p>
+      )}
+    </Row>
   );
 };
 
