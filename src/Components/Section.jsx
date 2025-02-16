@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Badge, Spinner } from "react-bootstrap";
 import CityCard from "./CityCard";
 
 const Section = (props) => {
@@ -68,7 +68,9 @@ const Section = (props) => {
           <CityCard infoCitta={infoCitta} />
         </>
       ) : (
-        <h4 className="my-2">Città non trovata</h4>
+        <Badge className="justify-content-center my-3 fw-bold" bg="light" text="dark">
+          Città non trovata
+        </Badge>
       )}
     </>
   );

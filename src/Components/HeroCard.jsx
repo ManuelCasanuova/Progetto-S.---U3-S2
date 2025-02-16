@@ -28,7 +28,9 @@ const HeroCard = ({ infoCitta }) => {
             </Link>
             <Card.Text className="text-white">{new Date(infoCitta.dt * 1000).toLocaleDateString("it-IT")}</Card.Text>
             <Card.Text className="text-white">Media: {Math.floor(infoCitta.main.temp)}°</Card.Text>
-            <Card.Text className="text-white">{infoCitta.weather[0].description}</Card.Text>
+            <Card.Text className="text-white">
+              {infoCitta.weather[0].description.charAt(0).toUpperCase() + infoCitta.weather[0].description.slice(1)}
+            </Card.Text>
           </Card.Body>
         </Col>
       </Row>

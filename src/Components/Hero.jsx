@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Spinner } from "react-bootstrap";
+import { Badge, Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
 
 import HeroCard from "./HeroCard";
@@ -10,7 +10,7 @@ const Hero = () => {
   const [city, setCity] = useState(null);
   const [infoCitta, setInfoCitta] = useState(null);
   const { place } = useParams();
-  const cittàDefault = "Essaouira";
+  const cittàDefault = "Rome";
 
   console.log("Sono il parametro ", place);
 
@@ -82,7 +82,9 @@ const Hero = () => {
       ) : infoCitta ? (
         <HeroCard infoCitta={infoCitta} />
       ) : (
-        <h4 className="my-2">Città non trovata</h4>
+        <Badge bg="light" text="dark">
+          Città non trovata
+        </Badge>
       )}
     </>
   );

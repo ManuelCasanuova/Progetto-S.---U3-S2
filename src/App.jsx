@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import CityDetails from "./Components/CityDetails";
 import Hero from "./Components/Hero";
 import SurfPage from "./Components/SurfPage";
+import NotFound from "./Components/NotFoud";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/SurfPage/CityDetails/:lat/:lon" element={<CityDetails />} />
           <Route path="/CityDetails/:lat/:lon" element={<CityDetails />} />
           <Route path="/SurfPage" element={<SurfPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         {/*  <Footer /> */}
       </BrowserRouter>
