@@ -9,8 +9,11 @@ const FormNav = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/home/hero/${città}`);
+    navigate(`/hero/${città}`);
+
+    console.log("Parametro in NavForm", città);
   };
+
   console.log(città);
   return (
     <>
@@ -19,7 +22,6 @@ const FormNav = () => {
           <Form.Control
             type="text"
             placeholder="Inserisci il nome della città"
-            value={città}
             onChange={(e) => setCittà(e.target.value)}
           />
         </Form.Group>

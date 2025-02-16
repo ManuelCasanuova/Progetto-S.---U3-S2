@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
-import CityCard from "./CityCard";
+
 import { Spinner } from "react-bootstrap";
+import { useParams } from "react-router";
+
+import HeroCard from "./HeroCard";
 
 const Hero = () => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
   const [infoCitta, setInfoCitta] = useState(null);
-  const città = useParams();
+  const { città } = useParams();
+  const cittàDefault = "Essaouira";
 
-  const fetchCittà = () => {
+  console.log("Sono il parametro ", città);
+
+  const fetchCittà = (nomeCittà) => {
+    console.log("Sono il parametro ", città);
+
     setCaricamento(true);
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${città}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${nomeCittà}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
       .then((resp) => {
         if (!resp.ok) {
           throw new Error("Errore nella chiamata API");
@@ -31,9 +39,12 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    fetchCittà();
+    console.log("Sono il parametro ", città);
+    const nomeCittà = città || cittàDefault;
+    fetchCittà(nomeCittà);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [città]);
 
   useEffect(() => {
     if (!city) return;
@@ -69,9 +80,7 @@ const Hero = () => {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       ) : infoCitta ? (
-        <>
-          <CityCard infoCitta={infoCitta} />
-        </>
+        <HeroCard infoCitta={infoCitta} />
       ) : (
         <h4 className="my-2">Città non trovata</h4>
       )}
