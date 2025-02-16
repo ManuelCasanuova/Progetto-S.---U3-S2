@@ -4,12 +4,15 @@ import Section from "./Section";
 const SurfPage = () => {
   <>
     <Container fluid>
-      <Row className="justify-content-center">
-        <Col xs={12} sm={6} md={4} lg={3}>
-          <Section luogo="Roma" />
-          <Section luogo="Milano" />
+      <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
+        <Col>
+          <Section luogo="Fuerteventura" />
+        </Col>
+        <Col>
+          <Section luogo="LosAngeles" />
+        </Col>
+        <Col>
           <Section luogo="Miami" />
-          <Section luogo="Perugia" />
         </Col>
       </Row>
     </Container>

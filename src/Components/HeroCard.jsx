@@ -1,4 +1,5 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router";
 
 const HeroCard = ({ infoCitta }) => {
   const iconUrl = `https://openweathermap.org/img/wn/${infoCitta.weather[0].icon}@2x.png`;
@@ -22,7 +23,9 @@ const HeroCard = ({ infoCitta }) => {
 
         <Col xs={6} md={6} className="d-flex align-items-center ">
           <Card.Body>
-            <h2 className="display-5 fw-bold text-white">{infoCitta.name}</h2>
+            <Link to={`CityDetails/${infoCitta.coord.lat}/${infoCitta.coord.lon}`} style={{ textDecoration: "none" }}>
+              <h2 className="display-5 fw-bold text-white">{infoCitta.name}</h2>
+            </Link>
             <Card.Text className="text-white">{new Date(infoCitta.dt * 1000).toLocaleDateString("it-IT")}</Card.Text>
             <Card.Text className="text-white">Media: {Math.floor(infoCitta.main.temp)}°</Card.Text>
             <Card.Text className="text-white">{infoCitta.weather[0].description}</Card.Text>

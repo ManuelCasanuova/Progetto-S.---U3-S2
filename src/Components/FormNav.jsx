@@ -21,7 +21,7 @@ const FormNav = () => {
         </Form.Group>
 
         {place.trim() && (
-          <Link to={`/hero/${place}`} className="btn btn-success">
+          <Link to={`/searched/${place}`} className="btn btn-success">
             <Search />
           </Link>
         )}

@@ -5,7 +5,7 @@ import Section from "./Section";
 const Home = () => {
   return (
     <>
-      {location.pathname !== "/hero/:città" && <Hero />}
+      <Hero />
       <Container fluid>
         <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
           <Col>

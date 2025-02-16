@@ -8,7 +8,7 @@ const CityCard = (props) => {
   return (
     <>
       <Link to={`CityDetails/${info.coord.lat}/${info.coord.lon}`} style={{ textDecoration: "none" }}>
-        <Card className="rounded-4 ">
+        <Card className="rounded-4  mb-5">
           <div className="image-container d-flex">
             <Card.Img variant="top" src={iconUrl} alt={info.weather[0].main} />
           </div>

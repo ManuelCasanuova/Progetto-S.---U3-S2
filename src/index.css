@@ -1,6 +1,10 @@
+html,
 body {
+  height: 100%;
+  margin: 0;
   background: linear-gradient(to bottom, #d79b7c, #80e0e8, #004d40);
   color: aliceblue;
+  background-attachment: fixed;
 }
 
 .navbar {
@@ -20,12 +24,6 @@ form .form-control::placeholder {
   color: aliceblue;
 }
 
-.footer-icon,
-.footer-links a {
-  text-decoration: none;
-  color: aliceblue;
-}
-
 .image-container {
   width: 110px;
   height: 120px;
@@ -36,4 +34,10 @@ form .form-control::placeholder {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.footer-icon,
+.footer-links a {
+  text-decoration: none;
+  color: aliceblue;
 }
