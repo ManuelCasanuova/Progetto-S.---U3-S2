@@ -5,9 +5,19 @@ const HeroCard = ({ infoCitta }) => {
 
   return (
     <Container fluid>
-      <Row className="justify-content-end ">
-        <Col xs={3} md={3} className=" p-4 d-flex align-items-center">
-          <Card.Img variant="top" src={iconUrl} alt={infoCitta.weather[0].main} />
+      <Row className="justify-content-center my-5">
+        <Col
+          xs={6}
+          md={6}
+          style={{ width: "200px", height: "200px", overflow: "hidden" }}
+          className=" d-flex align-items-center"
+        >
+          <Card.Img
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            variant="top"
+            src={iconUrl}
+            alt={infoCitta.weather[0].main}
+          />
         </Col>
 
         <Col xs={6} md={6} className="d-flex align-items-center ">

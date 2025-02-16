@@ -8,7 +8,7 @@ const FormNav = () => {
 
   return (
     <>
-      <Form className="d-flex align-items-center">
+      <Form className="d-flex align-items-center mt-3">
         <Form.Group className="me-3" controlId="formCittà">
           <Form.Control
             type="text"

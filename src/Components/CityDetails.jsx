@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Arrow90degDown } from "react-bootstrap-icons";
+
+import CardDetails from "./CardDetails";
 
 const CityDetails = () => {
   const { lat, lon } = useParams();
@@ -45,28 +46,7 @@ const CityDetails = () => {
         </Spinner>
       ) : cityDetails ? (
         <>
-          <Container>
-            <h2>
-              Dettagli di {cityDetails.name} - {new Date(cityDetails.dt * 1000).toLocaleDateString("it-IT")}
-            </h2>
-
-            <Row className="g-0">
-              <Col xs={12} md={3} className="p-4 d-flex align-items-center">
-                <h2>{Math.floor(cityDetails.main.temp)}°</h2>
-                <Card.Img variant="top" />
-              </Col>
-              <Col xs={12} md={9} className="d-flex align-items-center">
-                <Card.Body>
-                  <Card.Text>
-                    <Arrow90degDown
-                      className="detail-icon"
-                      style={{ transform: `rotate(${cityDetails.wind.deg}deg)` }}
-                    />
-                  </Card.Text>
-                </Card.Body>
-              </Col>
-            </Row>
-          </Container>
+          <CardDetails cityDetails={cityDetails} />
         </>
       ) : (
         <h4 className="my-2">Dettagli non trovati</h4>
