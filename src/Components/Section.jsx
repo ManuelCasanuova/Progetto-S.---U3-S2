@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import CityCard from "./CityCard";
-import { Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 
 const Section = (props) => {
   const [caricamento, setCaricamento] = useState(false);
@@ -70,9 +70,13 @@ const Section = (props) => {
         </Spinner>
       ) : infoCitta.length > 0 ? (
         <>
-          {infoCitta.map((infoCitta) => (
-            <CityCard key={infoCitta.id} infoCitta={infoCitta} /> // Mostra ogni città come card
-          ))}
+          <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
+            {infoCitta.map((infoCitta) => (
+              <Col key={infoCitta.id}>
+                <CityCard infoCitta={infoCitta} />
+              </Col>
+            ))}
+          </Row>
         </>
       ) : (
         <h4 className="my-2">Città non trovata</h4>
