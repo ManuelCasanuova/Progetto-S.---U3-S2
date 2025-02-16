@@ -1,5 +1,5 @@
-.navbar {
-  background-color: #daceb6;
+body {
+  background: linear-gradient(to right, #00bcd4, #80e0e8, #004d40);
 }
 
 .navbar-nav .nav-link.active,
@@ -12,13 +12,4 @@
 .footer-links a {
   text-decoration: none;
   color: #078cc3;
-}
-
-#hero {
-  background-image: url("./assets/Hero.webp");
-  background-size: cover; /* o contain, auto, 100% 100%, ecc. */
-  background-repeat: no-repeat; /* o repeat, repeat-x, repeat-y */
-  padding: 200px 0;
-
-  opacity: 0.2;
 }
