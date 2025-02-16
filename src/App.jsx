@@ -13,10 +13,9 @@ function App() {
       <BrowserRouter>
         <CustomNavBar />
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="hero/:città" element={<Hero />} />
-          </Route>
-
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/hero/:place" element={<Hero />} />
           <Route path="/CityDetails/:lat/:lon" element={<CityDetails />} />
         </Routes>
         <Footer />

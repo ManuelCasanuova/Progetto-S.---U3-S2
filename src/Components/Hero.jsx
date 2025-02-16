@@ -9,13 +9,13 @@ const Hero = () => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
   const [infoCitta, setInfoCitta] = useState(null);
-  const { città } = useParams();
+  const { place } = useParams();
   const cittàDefault = "Essaouira";
 
-  console.log("Sono il parametro ", città);
+  console.log("Sono il parametro ", place);
 
   const fetchCittà = (nomeCittà) => {
-    console.log("Sono il parametro ", città);
+    console.log("Sono il parametro ", place);
 
     setCaricamento(true);
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${nomeCittà}&appid=21ab05e2b62833a8e5cf2dcedc9a347f`)
@@ -39,12 +39,12 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    console.log("Sono il parametro ", città);
-    const nomeCittà = città || cittàDefault;
+    console.log("Sono il parametro ", { place });
+    const nomeCittà = place || cittàDefault;
     fetchCittà(nomeCittà);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [città]);
+  }, [place]);
 
   useEffect(() => {
     if (!city) return;
