@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Hero from "./Hero";
 import Section from "./Section";
 
@@ -7,9 +7,17 @@ const Home = () => {
     <>
       {location.pathname !== "/hero/:città" && <Hero />}
       <Container fluid>
-        <Section luogo="Roma" />
-        <Section luogo="Milano" />
-        <Section luogo="Miami" />
+        <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
+          <Col>
+            <Section luogo="Roma" />
+          </Col>
+          <Col>
+            <Section luogo="Milano" />
+          </Col>
+          <Col>
+            <Section luogo="Miami" />
+          </Col>
+        </Row>
       </Container>
     </>
   );

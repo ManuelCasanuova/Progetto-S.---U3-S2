@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-
+import { Spinner } from "react-bootstrap";
 import CityCard from "./CityCard";
-import { Col, Row, Spinner } from "react-bootstrap";
 
 const Section = (props) => {
   const [caricamento, setCaricamento] = useState(false);
   const [city, setCity] = useState(null);
-  const [infoCitta, setInfoCitta] = useState([]);
+  const [infoCitta, setInfoCitta] = useState(null);
 
   const fetchCittà = () => {
     setCaricamento(true);
@@ -21,7 +20,6 @@ const Section = (props) => {
         setCaricamento(false);
         if (cittaCercata.length > 0) {
           setCity(cittaCercata[0]);
-          console.log([...cittaCercata[0]]);
         }
       })
       .catch((e) => {
@@ -32,14 +30,12 @@ const Section = (props) => {
 
   useEffect(() => {
     fetchCittà();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (!city) return;
     const fetchLoneLat = () => {
       setCaricamento(true);
-      console.log(city);
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=21ab05e2b62833a8e5cf2dcedc9a347f`
       )
@@ -51,8 +47,7 @@ const Section = (props) => {
         })
         .then((dettagliCitta) => {
           setCaricamento(false);
-          setInfoCitta((prevInfo) => [...prevInfo, dettagliCitta]);
-          console.log("Sono l'oggeto ricavato dalla FETCH", dettagliCitta);
+          setInfoCitta(dettagliCitta);
         })
         .catch((e) => {
           console.error("Errore durante il recupero dei dati:", e);
@@ -68,15 +63,9 @@ const Section = (props) => {
         <Spinner animation="grow" role="status" variant="danger" className="d-block mx-auto">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-      ) : infoCitta.length > 0 ? (
+      ) : infoCitta ? (
         <>
-          <Row xs={1} sm={2} md={3} lg={4} className="g-4 justify-content-center">
-            {infoCitta.map((infoCitta) => (
-              <Col key={infoCitta.id}>
-                <CityCard infoCitta={infoCitta} />
-              </Col>
-            ))}
-          </Row>
+          <CityCard infoCitta={infoCitta} />
         </>
       ) : (
         <h4 className="my-2">Città non trovata</h4>
